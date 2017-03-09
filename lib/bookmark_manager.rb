@@ -4,11 +4,15 @@ class BookmarkManager
   include DBHelper
 
   def show_links
-    links_list
+    list_links
   end
 
   def add_link(params)
     insert_into_db(params)
+  end
+
+  def show_tags
+    list_tags
   end
 
 end

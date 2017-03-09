@@ -6,6 +6,7 @@ require 'rspec'
 require './app'
 require 'database_cleaner'
 require_relative '../app/helpers/dm_config'
+require_relative './features/web_helper'
 
 
 Capybara.app = App
