@@ -12,6 +12,7 @@ class BookmarkManager
   end
 
 private
+
   def format_for_db(params)
     params.inject({}) { |params, (k, v)| params[k.to_sym] = v; params }
   end
