@@ -1,5 +1,22 @@
 module DBHelper
 
+  def list_bookmarks
+    bookmark_array = []
+    get_all_bookmarks.each do |bookmark|
+      link = Link.get(bookmark.link_id)
+      tag_array = []
+      link.tags.each {|tag| tag_array << tag.name}
+      bookmark_array << {title: link.title,url: link.url,tags: tag_array}
+    end
+    bookmark_array
+  end
+
+  def get_all_bookmarks
+    LinkTag.all
+  end
+
+  # Links Methods
+
   def get_all_links
     Link.all
   end
@@ -14,6 +31,8 @@ module DBHelper
     {title: link.title, url: link.url}
   end
 
+  # Tags Methods
+
   def get_all_tags
     Tag.all
   end
@@ -27,6 +46,8 @@ module DBHelper
   def tag_formatter(tag)
     {name: tag.name}
   end
+
+  # Write DB Methods
 
   def insert_into_db(params)
     LinkTag.create(:link => Link.create(:title => params[:title], :url => params[:url]), :tag => Tag.first_or_create(:name => (params[:tag].capitalize)))

@@ -3,12 +3,12 @@
 <hr>
 
 <ol>
-  <% @links.each do |link| %>
+  <% @bookmarks.each do |bkmk| %>
     <li>
-      <%=link[:title]%><br>
-      <%=link[:url]%><br>
-      <% @tags.each do |tag| %>
-      <%=tag[:name]%>
+      <%=bkmk[:title]%><br>
+      <%=bkmk[:url]%><br>
+      <% bkmk[:tags].each do |tag| %>
+        <%=tag%>
       <%end%>
     </li>
   <%end%>

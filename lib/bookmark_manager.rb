@@ -3,6 +3,10 @@ require './lib/db_helper'
 class BookmarkManager
   include DBHelper
 
+  def show_bookmarks
+    list_bookmarks
+  end
+
   def show_links
     list_links
   end

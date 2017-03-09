@@ -3,8 +3,7 @@ require 'bookmark_manager'
 describe BookmarkManager do
 
   before(:each) do
-    Link.create(title: "Example Page", url: "http://example.com")
-    Tag.create(name: "Favourites")
+    LinkTag.create(:link => Link.create(:title => "Example Page", :url => "http://example.com"), :tag => Tag.first_or_create(:name => "Favourites"))
   end
 
   describe '#get_all_links' do
@@ -65,6 +64,13 @@ describe BookmarkManager do
       tag = subject.get_all_tags[0]
       expect(subject.tag_formatter(tag)).to be_an_instance_of Hash
       expect(subject.tag_formatter(tag)[:name]).to eql "Favourites"
+    end
+  end
+
+  describe '#show_bookmarks' do
+    it 'displays all bookmarks data' do
+      expect(subject.show_bookmarks).to be_an_instance_of Array
+      expect(subject.show_bookmarks[0][:title]).to eql "Example Page"
     end
   end
 

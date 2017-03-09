@@ -14,8 +14,9 @@ class App < Sinatra::Base
   end
 
   get '/links' do
-    @links = session[:bookmark_manager].show_links
-    @tags = session[:bookmark_manager].show_tags
+    @bookmarks = session[:bookmark_manager].show_bookmarks
+    # @links = session[:bookmark_manager].show_links
+    # @tags = session[:bookmark_manager].show_tags
     erb :links
   end
 
