@@ -8,13 +8,7 @@ class BookmarkManager
   end
 
   def add_link(params)
-    insert_into_db(format_for_db(params))
-  end
-
-private
-
-  def format_for_db(params)
-    params.inject({}) { |params, (k, v)| params[k.to_sym] = v; params }
+    insert_into_db(params)
   end
 
 end
