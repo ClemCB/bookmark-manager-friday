@@ -5,4 +5,5 @@ feature App do
     visit '/'
     expect(page).to have_content("http://example.com")
   end
+
 end

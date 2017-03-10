@@ -29,4 +29,20 @@ class App < Sinatra::Base
     redirect '/links'
   end
 
+  get '/tags/bubbles' do
+    tag = Tag.first(name: 'bubbles')
+    p @bookmarks = session[:bookmark_manager].show_bookmarks
+    p @bookmarks.each { |k, v| k[:tags] == tag }
+    # @bookmarks = tag ? tag.links : []
+
+    # #if @bookmarks[:tags].each { |value| value.to_s == tag.to_s}
+    #   "hello"
+    # else
+    #   []
+    # end
+    # p 'hello'
+    # p tag
+    erb :links
+    end
+
 end
